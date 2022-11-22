@@ -1,22 +1,15 @@
-// import modules
-const express = require('express');
-const axios = require('axios');
-const cheerio = require('cheerio');
-
-
-// Define the port
-const PORT = 5000
-
-// Initilize the app
+// create an express app
+const express = require("express")
 const app = express()
 
-// Define the initial URL
+// use the express-static middleware
+app.use(express.static("public"))
 
-app.get('/', (req, res)=> {
-    res.json('Hello, World')
+// define the first route
+app.get("/", function (req, res) {
+  res.send("<h1>Hello World!</h1>")
 })
 
-
-
-
-app.listen(PORT, ()=> {console.log(`Server is running on PORT ${PORT}`)})
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
