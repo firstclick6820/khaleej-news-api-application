@@ -1,49 +1,3 @@
-// // Define the PORT
-// const PORT= 5000
-
-// // Import required Modules
-// const express = require("express")
-// const cheerio = require('cheerio')
-// const axios = require('axios')
-
-
-
-// // Initilize the app
-// const app = express()
-
-// // use the express-static middleware
-// app.use(express.static("public"))
-
-
-
-
-
-// // define the first route
-// app.get("/", function (req, res) {
-//   res.json("Now it is working")
-// })
-
-
-
-// // define the second route
-// app.get("/news", function (req, res) {
-//     res.json('News Section')
-// })
-
-
-
-
-
-
-
-
-
-// // start the server listening for requests
-// app.listen(process.env.PORT || PORT, 
-// 	() => console.log(`Server is running on PORT ${PORT}...`));
-
-
-
 // define the port for running the local server.
 const PORT = 5000;
 
@@ -82,12 +36,7 @@ axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
     // Grap all the articles 
     const articles = $('.rendered_board_article');
 
-  
-    
-    // articles.map((title)=> {
-    //     let __title = $(title).text()
-    //     my_data.push({name: `${__title}`, id: 2})
-    // })
+
 
 
     // Loop through each article to grap more specific required elements.
@@ -150,6 +99,10 @@ app.get('/', (req, res) => {
    
 })
 
+
+app.get('/news', (req, res) => {
+    res.json('here we are')
+})
 
 app.listen(process.env.PORT || PORT, 
 	() => console.log(`Server is running on PORT ${PORT}...`));
