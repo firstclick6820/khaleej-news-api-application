@@ -110,6 +110,11 @@ axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
 
 
 app.get('/', (req, res) => {
+    res.json("Welcome to the KHALEEJ TIMES NEWS API APPLICATION - HOME PAGE")
+   
+})
+
+app.get('/news', (req, res) => {
     res.json(khaleejNewsApi)
    
 })
