@@ -34,6 +34,12 @@ const app = express()
 
 
 app.use(cors(corsOptions));
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header("Access-Control-Allow-Headers","*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+});
 
 // Define our News API
 const khaleejNewsApi = []
