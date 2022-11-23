@@ -7,7 +7,7 @@ const PORT = 3000;
 const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
-
+const path = require('path')
 const cors = require('cors');
 
 // Just want to add a check purpuse
@@ -48,6 +48,8 @@ app.use(function(req, res, next) {
     next();
 });
 
+
+
 // Define our News API
 const khaleejNewsApi = []
 
@@ -57,6 +59,7 @@ const khaleejNewsApi = []
 
 // Call a get request to grap all the articles from the khaleej News Site.
 axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
+    
     const html = response.data
     // Loading data to the cheerio
     const $= cheerio.load(html)
@@ -123,19 +126,18 @@ axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
 
 
 app.get('/', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.json("Welcome to the KHALEEJ TIMES NEWS API APPLICATION - HOME PAGE")
    
 })
 
 app.get('/news', (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
     res.json(khaleejNewsApi)
    
 })
 
 
-app.get('/news', (req, res) => {
-    res.json('here we are')
-})
 
 app.listen(process.env.PORT || PORT, 
 	() => console.log(`Server is running on PORT ${PORT}...`));
