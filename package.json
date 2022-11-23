@@ -4,7 +4,7 @@
   "description": "This is a simple API Application used to grap news from the web and represent it as a json module.",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon",
+    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "author": "Khalid_momand",

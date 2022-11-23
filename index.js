@@ -1,5 +1,6 @@
 // define the port for running the local server.
-const PORT = 3000;
+const PORT = 5000;
+
 
 
 // Import Required Modules
@@ -82,9 +83,10 @@ axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
         let articleImageUrlWrapper = $(articles[i]).find(".post-thumbnail > a > img")[0],
             articleImagesUrlList = $(articleImageUrlWrapper).attr('data-srcset')
 
+            
+            
+        
 
-
-    
             // Push the API to the dictionary
         
             khaleejNewsApi.push({
@@ -92,7 +94,7 @@ axios.get(KHALEEJ_NEWS_WEBSITE_URL).then((response)=> {
             headline: articleTitle,
             link: articleUrl,
             summary: articleSummary,
-            imagesList: articleImagesUrlList,
+            imagesList: JSON.stringify(articleImagesUrlList ? articleImagesUrlList.split(",") : articleImagesUrlList),
         
            
             
