@@ -8,6 +8,7 @@ const express = require('express')
 const axios = require('axios')
 const cheerio = require('cheerio')
 
+const cors = require('cors');
 
 // Just want to add a check purpuse
 
@@ -20,6 +21,17 @@ const KHALEEJ_NEWS_WEBSITE_URL  = "https://www.khaleejtimes.com/";
 
 
 
+const corsOptions ={
+   
+    origin:`http://localhost:${PORT}`, 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+    
+    
+}
+
+
+
 
 
 
@@ -28,6 +40,7 @@ const app = express()
 
 
 
+app.use(cors(corsOptions));
 app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', req.headers.origin);
     res.header("Access-Control-Allow-Headers","*");
